@@ -5,13 +5,13 @@ the needs for an API can be satisfied using the webhook functionality of
 YourSixOS. A typical request is: "can we poll health data from YourSixOS?". The
 answer is _no_, but we can send the data to you instead; immediately when
 there's a change in health state. This adheres to the pattern of event-driven
-architecture, and the way we deliver events to 3rd party systems is via
-webhooks (HTTP requests going from YourSixOS to the 3rd party system).
+architecture, and the way we deliver events to third party systems is via
+webhooks (HTTP requests going from YourSixOS to the third party system).
 
 This repository holds an example that demonstrates how to use the YourSixOS
 webhooks to monitor the health of devices. YourSixOS event notifications are
 received as webhooks; the payloads are parsed and indexed in a PostgreSQL
-database, and visualized via a small HTML5/Javascript application.
+database, and visualized via a small HTML5/JavaScript application.
 
 ![Screenshot](./docs/screenshot.png)
 
@@ -82,7 +82,7 @@ The deployment composition deploys the following containers:
 
 To deploy the stack, you need a VPS, EC2, Azure VM or similar machine with:
 
-* A routable IPv4 address
+* A publicly routable IP address
 * An FQDN pointed to it
 * Ports TCP 443 and TCP 80 open
 
