@@ -1,0 +1,43 @@
+name: healthmonitor
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: healthmonitor
+      POSTGRES_PASSWORD: <INSERT DB PASSWORD HERE>
+      POSTGRES_DB: healthmonitor
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U healthmonitor"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    environment:
+      LISTEN_HTTP: ":8000"
+      DATABASE_HOST: db
+      DATABASE_NAME: healthmonitor
+      DATABASE_USER: healthmonitor
+      DATABASE_PASS: <INSERT DB PASSWORD HERE>
+    depends_on:
+      db:
+        condition: service_healthy
+
+  proxy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+
+volumes:
+  db_data:
+  caddy_data:

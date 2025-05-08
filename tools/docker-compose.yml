@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: healthmonitor
+      POSTGRES_PASSWORD: healthmonitor
+      POSTGRES_DB: healthmonitor
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      LISTEN_HTTP: ":8000"
+      DATABASE_HOST: db
+      DATABASE_NAME: healthmonitor
+      DATABASE_USER: healthmonitor
+      DATABASE_PASS: healthmonitor
+    depends_on:
+      - db
+    develop:
+      watch:
+        - action: rebuild
+          path: ..
+          ignore:
+            - .git
+            - docs
+            - deploy
+            - dist
+            - node_modules
+            - README.md
+            - Taskfile.yml
+            - tools
+
+volumes:
+  data:

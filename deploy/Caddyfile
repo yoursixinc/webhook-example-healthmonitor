@@ -1,0 +1,23 @@
+healthmonitor.anondns.net/webhook { # Replace with your domain
+  log
+
+  # YourSixOS Webhook IPs
+  @blocked not client_ip 54.224.184.24 23.22.169.247 44.198.142.131
+  respond @blocked "Only YourSixOS is alloed to send webhooks here" 403
+
+  reverse_proxy http://app:8000
+}
+
+healthmonitor.anondns.net { # Replace with your domain
+  log
+
+  basic_auth {
+    # Replace <USERNAME> with your desired username
+    # Replace <PASSWORD> your your desired bcrypted password
+    # You can generate a bcrypted password using the following command:
+    # $> htpasswd -nB <USERNAME>
+    <USERNAME> <PASSWORD>
+  }
+
+  reverse_proxy http://app:8000
+}

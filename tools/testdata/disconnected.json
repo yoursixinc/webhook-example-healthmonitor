@@ -1,0 +1,17 @@
+{
+    "eventTopic": "device",
+    "eventCode": "disconnected",
+    "eventDescription": "Video Motion Detection",
+    "eventOccurred": "2021-12-22T23:00:00Z",
+    "eventData": {
+        "deviceId": "0a0b2a46-2bf8-11f0-b590-0bbdd1b873fe",
+        "deviceName": "Door 1A",
+        "deviceDescription": "Above left door",
+        "siteId": "182140d9-d99c-4dc8-ae14-0071a01d7e98",
+        "siteName": "HQ",
+        "siteDescription": "Company headquarters in NYC",
+        "groupId": "cf84e116-ee61-4bd8-b078-3d2fadfcc9ac",
+        "groupName": "West entrance",
+        "groupDescription": "E1"
+    }
+}

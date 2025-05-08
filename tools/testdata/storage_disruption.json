@@ -1,0 +1,17 @@
+{
+    "eventTopic": "device",
+    "eventCode": "storage_disruption",
+    "eventDescription": "Video Motion Detection",
+    "eventOccurred": "2021-12-22T23:00:00Z",
+    "eventData": {
+        "deviceId": "9efc5ea7-0e05-4806-96cb-99db85d71042",
+        "deviceName": "Ceiling 3C",
+        "deviceDescription": "Pointing towards left door",
+        "siteId": "182140d9-d99c-4dc8-ae14-0071a01d7e98",
+        "siteName": "HQ",
+        "siteDescription": "Company headquarters in NYC",
+        "groupId": "cf84e116-ee61-4bd8-b078-3d2fadfcc9ac",
+        "groupName": "West entrance",
+        "groupDescription": "E1"
+    }
+}

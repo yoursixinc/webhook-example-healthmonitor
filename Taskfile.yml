@@ -1,0 +1,23 @@
+---
+version: '3'
+
+tasks:
+  default:
+    cmds: [task -l]
+    silent: true
+
+  clean:
+    desc: Clean up files created by tasks
+    cmds:
+      - rm -rf bin/
+      - rm -rf node_modules/
+      - rm -rf dist/
+
+  build:
+    desc: Build application
+    cmds:
+      - mkdir -p dist
+      - npm install
+      - npm run build
+      - mkdir -p bin
+      - go build -o ./bin ./...
